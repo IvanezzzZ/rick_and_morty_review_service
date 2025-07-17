@@ -1,0 +1,33 @@
+services:
+  nginx_rick_and_morty:
+    container_name: nginx_rick_and_morty
+    image: nginx:latest
+    ports:
+      - "8989:80"
+    volumes:
+      - ./:/var/www/
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    depends_on:
+      - php_rick_and_morty
+
+  php_rick_and_morty:
+    container_name: php_rick_and_morty
+    build:
+      context: .
+      dockerfile: docker/php/Dockerfile
+    volumes:
+      - ./:/var/www/
+    depends_on:
+      - db_rick_and_morty
+
+  db_rick_and_morty:
+    image: postgres:16
+    container_name: db_rick_and_morty
+    environment:
+      POSTGRES_USER: rick
+      POSTGRES_PASSWORD: morty
+      POSTGRES_DB: rick_and_morty
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./postgres_data:/var/lib/postgresql/data

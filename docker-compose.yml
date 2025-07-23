@@ -24,9 +24,9 @@ services:
     image: postgres:16
     container_name: db_rick_and_morty
     environment:
-      POSTGRES_USER: rick
-      POSTGRES_PASSWORD: morty
-      POSTGRES_DB: rick_and_morty
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_DATABASE}
     ports:
       - "5432:5432"
     volumes:

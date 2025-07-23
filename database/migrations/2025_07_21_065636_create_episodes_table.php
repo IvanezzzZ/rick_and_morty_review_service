@@ -8,17 +8,17 @@ return new class extends Migration
 {
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedInteger('external_id')->unique();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->date('air_date');
             $table->timestamps();
         });
     }
 
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('episodes');
     }
 };

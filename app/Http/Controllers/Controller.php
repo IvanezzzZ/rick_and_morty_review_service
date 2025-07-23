@@ -9,7 +9,7 @@ use OpenApi\Attributes as OA;
 
 #[Info(
     version: '1.0.0',
-    description: 'API for carsharing',
+    description: 'Rick and Morty reviews API',
     title: 'API'
 )]
 

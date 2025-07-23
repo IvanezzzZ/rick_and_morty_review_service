@@ -35,4 +35,11 @@ return [
         ],
     ],
 
+    'rick_and_morty' => [
+        'host' => env('RICK_AND_MORTY_HOST'),
+        'endpoints' => [
+            'episodes' => 'episode'
+        ]
+    ]
+
 ];

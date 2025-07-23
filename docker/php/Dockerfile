@@ -1,15 +1,13 @@
 FROM php:8.4-fpm
 
 RUN apt-get update && apt-get install -y \
-    libzip-dev \
     zip \
     unzip \
-    apt-utils \
+    libzip-dev \
     libpq-dev \
-    libpng-dev \
-    git \
-    libxml2-dev && \
-    docker-php-ext-install pdo pdo_pgsql xml zip gd iconv && \
+    libxml2-dev \
+    git && \
+    docker-php-ext-install pdo pdo_pgsql xml zip && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
